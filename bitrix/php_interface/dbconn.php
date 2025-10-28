@@ -1,19 +1,18 @@
 <?php
-// Поддержка crontab
+// Если константы не заданы — подставляем значения по умолчанию
+if (!defined('DB_HOST')) define('DB_HOST', 'localhost');
+if (!defined('DB_NAME')) define('DB_NAME', 'milincw2_bx1');
+if (!defined('DB_LOGIN')) define('DB_LOGIN', 'milincw2_bx1');
+if (!defined('DB_PASSWORD')) define('DB_PASSWORD', '8FTb.q');
+
+$DBType = "mysql";
+$DBHost = DB_HOST;
+$DBLogin = DB_LOGIN;
+$DBPassword = DB_PASSWORD;
+$DBName = DB_NAME;
+
+$DBDebug = false;
+$DBDebugToFile = false;
+
+// Поддержка CRON
 define('BX_CRONTAB_SUPPORT', true);
-
-$DBHost = getenv('DB_HOST');
-$DBLogin = getenv('DB_USER');
-$DBPassword = getenv('DB_PASSWORD');
-$DBName = getenv('DB_NAME');
-
-define("DBPersistent", false);
-define("DBDebug", false);
-define("DBType", "mysql");
-define("DBDebugToFile", false);
-
-// Подключение ядра Битрикс
-if(!defined("BX_UTF"))
-    define("BX_UTF", true);
-
-require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
